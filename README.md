@@ -62,7 +62,7 @@ python
 
 ---
 
-## Citation & Acknowledgment
+## 4. Citation & Acknowledgment
 If you use or extend this code, please cite:
 
 @software{fattahi2025digitaldumbbell,  
@@ -72,8 +72,10 @@ If you use or extend this code, please cite:
   url = {https://github.com/amirhossein-fattahi/digital-dumbbell}  
 }
 
-## Contact
+---
+
+## 5. Contact
 Amirhossein Fattahi  
-MSc Candidate – Control Systems Engineering
+M.Sc. Student – Control Systems Engineering
 
 📧 Contact via GitHub Issues or direct email (see profile)
