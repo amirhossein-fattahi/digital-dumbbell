@@ -36,9 +36,33 @@ conda create -n opensim_proj -c conda-forge python=3.8 opensim numpy
 
 # 2. Activate the environment before running any scripts
 conda activate opensim_proj
+
+# 3. Inside <OPENSIM_INSTALL_DIR>/sdk/Python directory
+python setup_win_python38.py
+
+# 4. In the same directory
+python -m pip install .
+
+# 5. For testing the installation process
+python
+>>> import opensim as osim
+>>> osim.GetVersionAndDate()
 ```
 
-## 🧾 Citation & Acknowledgment
+---
+
+## 3. Troubleshooting and Known Errors
+
+| Error Message | Cause | Solution |
+| :--- | :--- | :--- |
+| `ImportError: DLL load failed... _simbody` | **Missing C++ Runtime / Environment Mismatch.** Failed to link to the OpenSim core library. | 1. **Re-run Conda Setup** (Section 2). 2. Ensure **VC++ 2015-2022 Redistributable (x64)** is installed/repaired. |
+| `RuntimeError: No object with name ...` | Coordinate name in script doesn't match name in the `.osim` file. | **Verify the Name:** Open the `.osim` file, search for `<Coordinate name="...`, and update the script to match exactly. |
+| `TypeError: in method 'Component_addComponent'...` | Unreliable component addition method. | **Use `osim.PrescribedForce`** and its `setFunction()` method, which safely handles component ownership (current script design). |
+| `[warning] Couldn't find file 'ground_ribs.vtp'.` | Missing visualization geometry files. | **Ignore this warning.** It does not affect physics or simulation results. |
+
+---
+
+## Citation & Acknowledgment
 If you use or extend this code, please cite:
 
 @software{fattahi2025digitaldumbbell,  
@@ -48,7 +72,7 @@ If you use or extend this code, please cite:
   url = {https://github.com/amirhossein-fattahi/digital-dumbbell}  
 }
 
-## 📬 Contact
+## Contact
 Amirhossein Fattahi  
 MSc Candidate – Control Systems Engineering
 
